@@ -126,10 +126,10 @@ export class UserService {
         .groupBy('challan.userId');
 
       if (date?.from && date?.to) {
-        totalsQuery.andWhere(
-          'challan.challan_date BETWEEN :from AND :to',
-          { from: date.from, to: date.to },
-        );
+        totalsQuery.andWhere('challan.challan_date BETWEEN :from AND :to', {
+          from: date.from,
+          to: date.to,
+        });
       }
 
       const totals = await totalsQuery.getRawMany();
